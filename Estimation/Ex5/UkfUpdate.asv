@@ -1,0 +1,35 @@
+function [xPosterior,PPosterior]= UkfUpdate(xPrior,PPrior,z,R,radarState)
+% Task 6 - Complete this function#
+disp(xPrior)
+kappa = 0;
+samplSize = 2*length(xPrior) + 1;
+w = ones(1,samplSize)*(1/(samplSize+kappa));
+w(1) = 0;
+disp(w)
+sample = zeros(length(xPrior),samplSize);
+hk = zeros(2,samplSize);
+for i = 1:samplSize 
+    extraElement = sqrtm((length(xPrior)+kappa)*PPrior);
+    if i==1
+        sample(:,i) = xPrior(:);
+    end
+    if i <= samplSize/2
+        sample(:,i) = xPrior + extraElement(1,:)';
+    end
+    if i> samplSize/2
+        sample(:,i) = xPrior - extraElement(1,:)';
+    end
+
+    hk(:,i) = [((sample(1,i)-radarState(1))^2 + (sample(2,i)-radarState(2))^2)^0.5 ; atan2( (sample(2,i)-radarState(2)) , (sample(1,i)-radarState(1)) ) ];
+end
+disp(sample)
+zkk = sum(hk.*w,2);
+Pzz = sum((w.*(hk-zkk))*(hk-zkk)',2);
+Pxz = sum((w.*(sample(:2))))
+
+disp(Pzz)
+
+
+xPosterior = xPrior + K*(z-zkk);
+
+PPosterior = PPrior - K*S*K';

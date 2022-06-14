@@ -1,0 +1,23 @@
+Task 3 - Q-Learning
+
+Answers:
+
+
+6) 	Training the Q-learning agent without noise:
+        a) Value at state (1, 5): 0.0
+        b) Optimal policy :  no
+        c) Name of parameter: Episodes(Higher provided better output), Epsilon value (Higher provided better output), Discount Factor(Higher provided better output)
+
+7) 	Comparison of values for the start state:
+        1) Value of the start state after 300 episodes: 2.541865
+        2) Average returns from the start state: -14.700220
+       
+       ANS: There is a big difference in this because of:
+        a) the randomness of exploration added to the agent
+        b) the number of win vs lose states. 
+        Since the agent can move with random behaviour, it faces a variety of paths over the iterations/episodes(both positive and negative, 
+        with high chances of negative reward due to the higher dying states). However, this changes over the iterations due to the Q-value it learns over episodes, 
+        which gradually helps the agent take the optimal path to the winning state as we come to episode 300.
+
+8)  Faster converging algorithm? ANS: Value Iteration converges faster than QLearning, because it has a model of the system rather than randomly exploring each state (as done in Q Learning).
+

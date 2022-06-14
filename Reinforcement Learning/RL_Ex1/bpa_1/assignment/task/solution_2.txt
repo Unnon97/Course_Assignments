@@ -1,0 +1,26 @@
+Task 2 - Value Iteration
+
+Answers:
+
+
+6) 	Rounds of value iteration for start state to become non-zero: 10
+    Why?
+    The only non zero reward is in pre terminal state (0, 3). Reward plays a role in the state value 
+    calculation. Through iterations the effect of the reward of the pre terminal state gets propogated to 
+    successive neighbouring states.
+    The shortest direct path from the start state (4, 0) to pre terminal state (0, 3) passes through 9 
+    other states. Hence for the value of the non terminal state to become non zero we need 10 iterations.
+
+7) 	Which parameter to change: noise 
+	Value of the changed parameter: any value less than or equal to 0.016
+
+8)	Parameter values producing optimal policy types:
+	    a) -n 0.005 -d 0.3
+	    b) -n 0.25 -d 0.3
+	    c) -n 0.01 -d 0.99
+	    d) -n 0.2 -d 0.99
+	    e) -n 0.2 -d 0
+
+9) 	Pros of Policy Iteration: 					Cons of Policy Iteration:
+		-	Algorithm is guaranteed to converge		- Algorithm is more complex
+		-	Computational cheaper					- Time inefficient as it evaluates policy and then improves it

@@ -1,0 +1,92 @@
+
+
+ Testing the PolicyIterationAgent on the MazeGrid 
+
+ values 
+ at (-1, -1) : 0.000000
+ at (0, 0) : 0.668008
+ at (0, 1) : 0.760787
+ at (0, 2) : 0.866451
+ at (0, 3) : 1.000000
+ at (1, 2) : 0.760787
+ at (2, 0) : 0.192357
+ at (2, 2) : 0.658348
+ at (2, 3) : 0.570393
+ at (3, 0) : 0.238754
+ at (3, 3) : 0.500767
+ at (4, 0) : 0.282386
+ at (4, 1) : 0.332192
+ at (4, 2) : 0.380045
+ at (4, 3) : 0.433556
+ 
+ policy 
+ at (-1, -1) move None 
+at (0, 0) move east 
+at (0, 1) move east 
+at (0, 2) move east 
+at (0, 3) move exit 
+at (1, 2) move north 
+at (2, 0) move south 
+at (2, 2) move north 
+at (2, 3) move west 
+at (3, 0) move south 
+at (3, 3) move north 
+at (4, 0) move east 
+at (4, 1) move east 
+at (4, 2) move east 
+at (4, 3) move north 
+
+ q-values 
+ at (0, 0) for moving north : 0.609557 
+at (0, 0) for moving west : 0.601207 
+at (0, 0) for moving south : 0.609557 
+at (0, 0) for moving east : 0.668008 
+at (0, 1) for moving north : 0.685868 
+at (0, 1) for moving west : 0.617907 
+at (0, 1) for moving south : 0.685868 
+at (0, 1) for moving east : 0.760787 
+at (0, 2) for moving north : 0.782316 
+at (0, 2) for moving west : 0.694218 
+at (0, 2) for moving south : 0.706237 
+at (0, 2) for moving east : 0.866451 
+at (0, 3) for moving exit : 1.000000 
+at (1, 2) for moving north : 0.760787 
+at (1, 2) for moving west : 0.684998 
+at (1, 2) for moving south : 0.610952 
+at (1, 2) for moving east : 0.684998 
+at (2, 0) for moving north : 0.173121 
+at (2, 0) for moving west : 0.177297 
+at (2, 0) for moving south : 0.206527 
+at (2, 0) for moving east : 0.177297 
+at (2, 2) for moving north : 0.658353 
+at (2, 2) for moving west : 0.601733 
+at (2, 2) for moving south : 0.584597 
+at (2, 2) for moving east : 0.538405 
+at (2, 3) for moving north : 0.521269 
+at (2, 3) for moving west : 0.570415 
+at (2, 3) for moving south : 0.471139 
+at (2, 3) for moving east : 0.507087 
+at (3, 0) for moving north : 0.181472 
+at (3, 0) for moving west : 0.214630 
+at (3, 0) for moving south : 0.246293 
+at (3, 0) for moving east : 0.214630 
+at (3, 3) for moving north : 0.500821 
+at (3, 3) for moving west : 0.450907 
+at (3, 3) for moving south : 0.402298 
+at (3, 3) for moving east : 0.450907 
+at (4, 0) for moving north : 0.227215 
+at (4, 0) for moving west : 0.250220 
+at (4, 0) for moving south : 0.258630 
+at (4, 0) for moving east : 0.286081 
+at (4, 1) for moving north : 0.298797 
+at (4, 1) for moving west : 0.263112 
+at (4, 1) for moving south : 0.298797 
+at (4, 1) for moving east : 0.333427 
+at (4, 2) for moving north : 0.342549 
+at (4, 2) for moving west : 0.307586 
+at (4, 2) for moving south : 0.342549 
+at (4, 2) for moving east : 0.380568 
+at (4, 3) for moving north : 0.433776 
+at (4, 3) for moving west : 0.357721 
+at (4, 3) for moving south : 0.385384 
+at (4, 3) for moving east : 0.396249 

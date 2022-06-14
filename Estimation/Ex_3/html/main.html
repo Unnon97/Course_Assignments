@@ -1,0 +1,242 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>"Estimation Assignment 3"</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-05-16"><meta name="DC.source" content="main.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>"Estimation Assignment 3"</h1><!--introduction--><pre class="language-matlab">
+<span class="keyword">function</span> [outputArg] = likelihood(snrSamples,range)
+    <span class="comment">% Task 2</span>
+    meanSnr = measurementFunction(range);
+    outputArg = (1/meanSnr)*exp(-snrSamples/meanSnr);
+<span class="keyword">end</span>
+
+
+</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">"Dheeraj Singh"</a></li></ul></div><h2 id="1">"Dheeraj Singh"</h2><pre class="language-matlab">
+<span class="keyword">function</span> meanSnr = measurementFunction(range)
+    <span class="comment">% Task 1</span>
+    range_0 = 10.0;
+    meanSnr = ((range_0./range).^2);
+<span class="keyword">end</span>
+
+
+</pre><pre class="codeinput">close <span class="string">all</span>
+clear <span class="string">all</span>
+load(<span class="string">'data.mat'</span>)
+
+<span class="comment">% TIP: Use figure handles and fmin, example:</span>
+funcHandle = @(x)-sin(x);
+maxim = fminbnd(funcHandle,0,pi);
+<span class="comment">% Maximum comes out at pi/2 as expected</span>
+</pre><p>Plot the likelihood as a function of range Task 3</p><pre class="codeinput">figure;
+Samples = data;
+range = 1:0.1:10;
+range_0 = 10;
+likeLihood = zeros(length(range),1);
+ele = 1;
+<span class="keyword">for</span> r=range
+    LikeL = likelihood(Samples, r);
+    likeLihood(ele) = prod(LikeL, <span class="string">'all'</span>);
+    ele = ele + 1;
+<span class="keyword">end</span>
+plot(range, likeLihood);
+title(<span class="string">'Likelihood Plot'</span>);
+xlabel(<span class="string">'Range'</span>);
+ylabel(<span class="string">'Likelihood'</span>);
+</pre><img vspace="5" hspace="5" src="main_01.png" alt=""> <p>Find maximum likelihood estimate</p><pre class="codeinput"><span class="comment">% Task 4</span>
+fhandle = @(r) -prod(likelihood(Samples, r), <span class="string">'all'</span>);
+mleEstimate = fminbnd(fhandle, 1, 10)
+</pre><pre class="codeoutput">
+mleEstimate =
+
+    5.6190
+
+</pre><p>Plot the posterior as a function of range Task 5</p><pre class="codeinput">figure;
+
+posterior = zeros(length(range),1);
+ele = 1;
+<span class="keyword">for</span> r=range
+    posterior(ele) = prod(likelihood(Samples, r), <span class="string">'all'</span>)*(1/sqrt(2*pi))*exp(-(r-5)^2/(2));
+    ele = ele +1;
+<span class="keyword">end</span>
+posterior = posterior/sum(posterior);
+plot(range, posterior);
+title(<span class="string">'Posterior Plot'</span>);
+xlabel(<span class="string">'Range'</span>);
+ylabel(<span class="string">'Posterior'</span>);
+</pre><img vspace="5" hspace="5" src="main_02.png" alt=""> <p>Find maximum as posteriori estimate Task 6</p><pre class="codeinput">priorMean = 5;
+priorStd = 1;
+
+fmap = @(r) -prod(likelihood(Samples, r), <span class="string">'all'</span>)*(1/sqrt(2*pi))*exp(-(r-5)^2/(2));
+mapEstimate = fminbnd(fmap, 1, 10)
+</pre><pre class="codeoutput">
+mapEstimate =
+
+    5.4458
+
+</pre><p>How does it vary in comparison to the maximum likelihood estimate? Task 7</p><pre class="codeinput">disp(<span class="string">"In Maximum a Posteriori, a prior knowledge about the parameter is included while calculating it,while there is no prior included in Maximum Likelihood Estimation. Therefore the mapEstimation achieves better or nearer value to the real parameter."</span>);
+</pre><pre class="codeoutput">In Maximum a Posteriori, a prior knowledge about the parameter is included while calculating it,while there is no prior included in Maximum Likelihood Estimation. Therefore the mapEstimation achieves better or nearer value to the real parameter.
+</pre><p>Find least squares estimate Task 8</p><pre class="codeinput">lsEstimate = sqrt(range_0^2/mean(Samples))
+</pre><pre class="codeoutput">
+lsEstimate =
+
+    5.6190
+
+</pre><p>Find the MMSE estimate Task 9</p><pre class="codeinput">mmseEstimate = sum(posterior.*range')
+</pre><pre class="codeoutput">
+mmseEstimate =
+
+    5.4649
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% "Estimation Assignment 3"
+% <include>likelihood.m</include>
+%% "Dheeraj Singh"
+% <include>measurementFunction.m</include>
+
+
+close all
+clear all
+load('data.mat')
+
+% TIP: Use figure handles and fmin, example:
+funcHandle = @(x)-sin(x);
+maxim = fminbnd(funcHandle,0,pi);
+% Maximum comes out at pi/2 as expected
+%%
+% Plot the likelihood as a function of range
+% Task 3
+figure;
+Samples = data;
+range = 1:0.1:10;
+range_0 = 10;
+likeLihood = zeros(length(range),1);
+ele = 1;
+for r=range
+    LikeL = likelihood(Samples, r);
+    likeLihood(ele) = prod(LikeL, 'all');
+    ele = ele + 1;
+end
+plot(range, likeLihood);
+title('Likelihood Plot');
+xlabel('Range');
+ylabel('Likelihood');
+
+
+
+%%
+% Find maximum likelihood estimate
+
+% Task 4
+fhandle = @(r) -prod(likelihood(Samples, r), 'all');
+mleEstimate = fminbnd(fhandle, 1, 10)
+
+
+%%
+% Plot the posterior as a function of range
+% Task 5
+figure;
+
+posterior = zeros(length(range),1);
+ele = 1;
+for r=range
+    posterior(ele) = prod(likelihood(Samples, r), 'all')*(1/sqrt(2*pi))*exp(-(r-5)^2/(2));
+    ele = ele +1;
+end
+posterior = posterior/sum(posterior);
+plot(range, posterior);
+title('Posterior Plot');
+xlabel('Range');
+ylabel('Posterior');
+
+
+%%
+% Find maximum as posteriori estimate
+% Task 6
+priorMean = 5;
+priorStd = 1;
+
+fmap = @(r) -prod(likelihood(Samples, r), 'all')*(1/sqrt(2*pi))*exp(-(r-5)^2/(2));
+mapEstimate = fminbnd(fmap, 1, 10)
+
+%%
+% How does it vary in comparison to the maximum likelihood estimate?
+% Task 7
+disp("In Maximum a Posteriori, a prior knowledge about the parameter is included while calculating it,while there is no prior included in Maximum Likelihood Estimation. Therefore the mapEstimation achieves better or nearer value to the real parameter.");
+
+%%
+% Find least squares estimate
+% Task 8
+lsEstimate = sqrt(range_0^2/mean(Samples))
+
+
+%%
+% Find the MMSE estimate
+% Task 9
+mmseEstimate = sum(posterior.*range')
+##### SOURCE END #####
+--></body></html>
