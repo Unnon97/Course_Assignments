@@ -4,4 +4,4 @@ Python implementation of Reinforcement Learning concepts
 3. Q Learning
 4. REINFORCE Algorithm
 5. Deep Q Learning Network
-6. Proxiamal Policy Optimisation
+6. Proximal Policy Optimisation
